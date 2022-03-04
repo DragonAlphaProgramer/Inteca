@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>SYSTEM DODAWANIA RODZIN</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body>
+        <div>System dodawania rodzin</div>
+        <form  action="/families"  method="post">
+            <p>
+                Nazwa: <input type="text" name="nazwa" id="nazwa"/>
+            </p>
+            <p>
+                Niemowleta: <input type="number" min="0" name="niemowleta" id="niemowleta"/>
+            </p>
+            <p>
+                Dzieci: <input type="number" min="0" name="dzieci" id="dzieci"/>
+            </p>
+            <p>
+                Dorosli: <input type="number" min="0" name="dorosly" id="dorosly"/>
+            </p>
+            <p>
+                <input type="submit" value="Submit"/> 
+            </p>
+            
+        </form>
+        <a href="krewniacy.html">dodaj krewnego</a>
+        <div>podgląd czlonkow rodzin<br>
+        <object data="TabelaKrewnych.html"></object>
+        </div>
+    </body>
+</html>

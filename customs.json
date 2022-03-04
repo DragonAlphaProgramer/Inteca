@@ -1,0 +1,21 @@
+{
+    "elements": {
+        "include": {
+            "attributes": {
+                "src": {}
+            }
+        },
+        "form:input": {}
+    },
+    "attributes": {
+        "th:if": {
+            "context": "div"
+        },
+        "method": {
+            "context": "input"
+        },
+        "th:field": {
+            "context": "input"
+        }
+    }
+}

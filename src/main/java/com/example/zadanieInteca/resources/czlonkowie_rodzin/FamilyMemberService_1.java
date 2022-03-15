@@ -5,26 +5,23 @@
 package com.example.zadanieInteca.resources.czlonkowie_rodzin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author PatrykK
  */
-@Service
-public class FamilyMemberService {
-
+public class FamilyMemberService_1 {
+    
     private static int idm=1;
     //zwrot wszystkich członków rodzin
-     public static ArrayList<FamilyMember> r1 = new ArrayList<FamilyMember>();
-    ArrayList<FamilyMember> getAllMember() {
+     public static ArrayList<FamilyMember_1> r1 = new ArrayList<FamilyMember_1>();
+    ArrayList<FamilyMember_1> getAllMember() {
     return r1;
     }
      //zwrot wszystkich członków danej rodziny
-    public static  ArrayList<FamilyMember> getFamilyMember(String s) {
-         ArrayList<FamilyMember> wynik = new ArrayList<>();
-    for(FamilyMember fm : r1){
+    public static  ArrayList<FamilyMember_1> getFamilyMember(String s) {
+         ArrayList<FamilyMember_1> wynik = new ArrayList<>();
+    for(FamilyMember_1 fm : r1){
         if(fm.getFamilyName().equals(s)){
             wynik.add(fm);
         }
@@ -35,11 +32,8 @@ public class FamilyMemberService {
    
 //tworzenie nowego członka danej rodziny
    public static  void createFamilyMember(String imie, String member, Integer wiek) {
-        r1.add(new FamilyMember(imie,member,wiek));
+        r1.add(new FamilyMember_1(idm,imie,member,wiek));
         idm = idm+1;}
        
-
-
-   
 
 }

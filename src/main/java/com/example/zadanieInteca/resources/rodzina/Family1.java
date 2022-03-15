@@ -1,7 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.example.zadanieInteca.resources.rodzina;
 
-import com.example.zadanieInteca.RESTService.MYException;
-import com.example.zadanieInteca.resources.czlonkowie_rodzin.FamilyMember;
+import com.example.zadanieInteca.RESTService.MYException1;
+import com.example.zadanieInteca.resources.czlonkowie_rodzin.FamilyMember_1;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Column;
@@ -24,9 +28,9 @@ import com.example.zadanieInteca.resources.czlonkowie_rodzin.*;
  */
 @Entity
 @Table(name = "rodziny")
-public class Family implements Serializable {
+public class Family1 implements Serializable {
 
-    public Family() {
+    public Family1() {
     }
     //kolumna ID
     @Id
@@ -38,7 +42,7 @@ public class Family implements Serializable {
     @Column
     private Integer Infants, Children, Adults;
 // konstruktor
-    Family(int id, String family, int bobas, int dzieciak, int dorosly, ArrayList<FamilyMember> lista_czlonkow) throws MYException {
+    Family1(int id, String family, int bobas, int dzieciak, int dorosly, ArrayList<FamilyMember_1> lista_czlonkow) throws MYException1 {
      // kontrola poprawności
         if (validateFamilyData(bobas, dzieciak, dorosly, lista_czlonkow) == true) {
             Infants = bobas;
@@ -49,7 +53,7 @@ public class Family implements Serializable {
             this.ID=id;
         } else {
             // przypadku niepoprawności
-            throw new MYException();
+            throw new MYException1();
         }
     }
 
@@ -79,9 +83,9 @@ public class Family implements Serializable {
 
     private String Name;
 
-    private ArrayList<FamilyMember> familyMembers = new ArrayList<>();
+    private ArrayList<FamilyMember_1> familyMembers = new ArrayList<>();
 
-    Family(Integer ID, String nazwa, Integer niemowleta, Integer dzieci, Integer dorosli, ArrayList<FamilyMember> czlonkowie_rodziny) throws MYException {
+    Family1(Integer ID, String nazwa, Integer niemowleta, Integer dzieci, Integer dorosli, ArrayList<FamilyMember_1> czlonkowie_rodziny) throws MYException1 {
         if (validateFamilyData(niemowleta, dzieci, dorosli, czlonkowie_rodziny) == true) {
             Infants = niemowleta;
             this.ID = ID;
@@ -90,7 +94,7 @@ public class Family implements Serializable {
             familyMembers = czlonkowie_rodziny;
             Name = nazwa;
         } else {
-            throw new MYException();
+            throw new MYException1();
         }
     }
 
@@ -106,15 +110,15 @@ public class Family implements Serializable {
         this.Name = Name;
     }
 
-    ArrayList<FamilyMember> getFamilyMembers() {
+    ArrayList<FamilyMember_1> getFamilyMembers() {
         return familyMembers;
     }
 
     //Metoda kontrolujaca poprawność
     @SuppressWarnings("empty-statement")
-    private boolean validateFamilyData(Integer niemowleta, Integer dzieci, Integer dorosli, ArrayList<FamilyMember> czlonkowie_rodziny) {
+    private boolean validateFamilyData(Integer niemowleta, Integer dzieci, Integer dorosli, ArrayList<FamilyMember_1> czlonkowie_rodziny) {
         int vniemowleta = 0, vdzieci = 0, vdorosli = 0;
-        for (FamilyMember CZ : czlonkowie_rodziny) {
+        for (FamilyMember_1 CZ : czlonkowie_rodziny) {
             if (CZ.wiek <= 4) {
                 vniemowleta = vniemowleta + 1;
             } else if (CZ.wiek > 4 && CZ.wiek <= 16) {
@@ -131,3 +135,4 @@ public class Family implements Serializable {
         return ID;
     }
 }
+

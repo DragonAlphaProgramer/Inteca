@@ -6,8 +6,8 @@
  * Author:  PatrykK
  * Created: 28 lut 2022
  */
-create database `Zlot_rodzin`;
-USE `Zlot_rodzin`;
+create database `zlot_rodzin`;
+USE `zlot_rodzin`;
 
 
 CREATE TABLE `rodziny` (

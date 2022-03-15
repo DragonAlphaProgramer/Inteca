@@ -1,4 +1,7 @@
-
+/**
+ *
+ * @author PatrykK
+ */
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -12,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.springframework.stereotype.Service;
 
 /**
  *
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Service;
 // Klasa reprezentująca członków rodzin
 @Entity
 @Table(name = "czlonkowie rodzin")
-public class FamilyMember implements Serializable{
+public class FamilyMember_1 implements Serializable{
    //kolumny Imienia, przynależności do rodziny i wieku
     @Column
     public String imie,nazwa;
@@ -32,7 +34,7 @@ public class FamilyMember implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public FamilyMember() {
+    public FamilyMember_1() {
     }
 
     public String getName() {
@@ -49,10 +51,11 @@ public class FamilyMember implements Serializable{
 
     
     //konstruktor
-    public FamilyMember(String Name, String FamilyName, int age) {
+    public FamilyMember_1(int id,String Name, String FamilyName, int age) {
         this.imie = Name;
         this.nazwa = FamilyName;
         this.wiek = age;
+        this.id=id;
     }
 
     public Integer getId() {

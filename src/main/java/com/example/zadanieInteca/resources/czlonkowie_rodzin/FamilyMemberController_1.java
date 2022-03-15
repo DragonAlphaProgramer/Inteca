@@ -8,38 +8,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author PatrykK
- */ 
-@RestController
-public class FamilyMemberController {
-    
-    public FamilyMemberService getRodzinny_czlonkowieService() {
+ */
+public class FamilyMemberController_1 {
+    public FamilyMemberService_1 getRodzinny_czlonkowieService() {
         return rodzinny_czlonkowieService;
     }
  
     @Autowired
-    private FamilyMemberService rodzinny_czlonkowieService;
+    private FamilyMemberService_1 rodzinny_czlonkowieService;
     
     @RequestMapping("/familiesMember")
-    public ArrayList<FamilyMember> getAllMember(){
+    public ArrayList<FamilyMember_1> getAllMember(){
         return rodzinny_czlonkowieService.getAllMember();
     } 
    
 // podgląd człoonków danej rodziny
     @RequestMapping("/familiesMember/{nazwa}")
-    public ArrayList<FamilyMember> getFamilyMember(@PathVariable String nazwa) {
+    public ArrayList<FamilyMember_1> getFamilyMember(@PathVariable String nazwa) {
         return rodzinny_czlonkowieService.getFamilyMember(nazwa);
     }
 // dodawanie członków rodziny

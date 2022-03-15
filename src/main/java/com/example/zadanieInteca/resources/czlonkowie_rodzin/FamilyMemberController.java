@@ -25,21 +25,19 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class FamilyMemberController {
     
-    public FamilyMemberService getRodzinny_czlonkowieService() {
-        return rodzinny_czlonkowieService;
-    }
+    
  
     @Autowired
     private FamilyMemberService rodzinny_czlonkowieService;
     
-    @RequestMapping("/familiesMember")
-    public ArrayList<FamilyMember> getAllMember(){
+    @RequestMapping(path="/familiesMember")
+    public @ResponseBody ArrayList<FamilyMember> getAllMember(){
         return rodzinny_czlonkowieService.getAllMember();
     } 
    
 // podgląd człoonków danej rodziny
-    @RequestMapping("/familiesMember/{nazwa}")
-    public ArrayList<FamilyMember> getFamilyMember(@PathVariable String nazwa) {
+    @RequestMapping(path="/familiesMember/{nazwa}")
+    public @ResponseBody ArrayList<FamilyMember> getFamilyMember(@PathVariable String nazwa) {
         return rodzinny_czlonkowieService.getFamilyMember(nazwa);
     }
 // dodawanie członków rodziny

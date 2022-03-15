@@ -9,10 +9,10 @@ import com.example.zadanieInteca.resources.czlonkowie_rodzin.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
+import com.example.zadanieInteca.resources.czlonkowie_rodzin.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +26,8 @@ public class FamilyController {
 
     @Autowired
     private FamilyService rodzinnyService;
+    @Autowired
+    private FamilyMemberService krewnyService;
 // zwrot wszystich rodzin
     @RequestMapping("/families")
     public ArrayList<Family> getAllFamily() {
@@ -33,15 +35,20 @@ public class FamilyController {
     }
 // zwrot rodziny o danym ID
     @RequestMapping("/families/{id}")
-    public Family getFamily(@PathVariable Integer id) {
+    public ArrayList<Family> getFamily(@PathVariable Integer id) {
         return rodzinnyService.getFamily(id);
     }
 // tworzenie nowej rodziny
     @RequestMapping(method = RequestMethod.POST, value = "/families")
     public String stworz_rodzine(@RequestParam("nazwa")String nazwa, @RequestParam("niemowleta")Integer niemowleta
     , @RequestParam("dzieci")Integer dzieci, @RequestParam("dorosly")Integer dorosli,HttpServletResponse httpResponse) throws IOException, MYException {
-        try{ArrayList<FamilyMember> czlonkowie = FamilyMemberService.getFamilyMember(nazwa);
-        rodzinnyService.createFamiy(nazwa,niemowleta,dzieci,dorosli,czlonkowie);
+        try{
+        ArrayList<FamilyMember> czlonkowieroziny = new  ArrayList<>();
+        for(FamilyMember FM : krewnyService.getFamilyMember(nazwa)){
+            czlonkowieroziny.add(FM);
+            System.out.println(FM.getName());
+        }
+        rodzinnyService.stworz_rodzine(nazwa,niemowleta,dzieci,dorosli,czlonkowieroziny);
         }catch (MYException ex){
             System.out.println("złe ilości składu rodziny");
         }

@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.springframework.stereotype.Service;
 
 /**
  *
@@ -20,17 +19,21 @@ import org.springframework.stereotype.Service;
  */
 // Klasa reprezentująca członków rodzin
 @Entity
-@Table(name = "czlonkowie rodzin")
+@Table(name = "czlonkowie_rodzin")
 public class FamilyMember implements Serializable{
    //kolumny Imienia, przynależności do rodziny i wieku
     @Column
-    public String imie,nazwa;
+    private String imie;
     @Column
-    public int wiek;
+    private String nazwa;
+    @Column
+    private int wiek;
     //ID
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE
+    )
+    private Integer idM;
 
     public FamilyMember() {
     }
@@ -49,18 +52,19 @@ public class FamilyMember implements Serializable{
 
     
     //konstruktor
-    public FamilyMember(String Name, String FamilyName, int age) {
+    public FamilyMember(int idM,String Name, String FamilyName, int age) {
         this.imie = Name;
         this.nazwa = FamilyName;
         this.wiek = age;
+        this.idM=idM;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdM() {
+        return idM;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdM(Integer idM) {
+        this.idM = idM;
     }
     
 }

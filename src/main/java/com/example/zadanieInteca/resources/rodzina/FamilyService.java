@@ -9,7 +9,9 @@ import com.example.zadanieInteca.resources.czlonkowie_rodzin.FamilyMember;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.zadanieInteca.resources.czlonkowie_rodzin.FamilyMemberRepository;
 
 /**
  *
@@ -19,26 +21,21 @@ import org.springframework.stereotype.Service;
 public class FamilyService {
 
    int idr=1;
-    
-    
-    private ArrayList<Family> rodziny;
-
-    //zwrot rodzin
-    public ArrayList<Family> getAllFamily(){
+    @Autowired
+    private FamilyRepository repozytorium;
+    //zwrot wszystkich członków rodzin
+     public  ArrayList<Family> r1 = new ArrayList<Family>();
+    ArrayList<Family> getAllFamily() {
+        ArrayList<Family> rodziny = new ArrayList<>();
+        repozytorium.findAll().forEach(rodziny::add);
         return rodziny;
     }
-    // zwrot rodziny o danym id
-    Family getFamily(Integer id) {
-    return rodziny.stream().filter(f ->f.getId().equals(id)).findFirst().get();
+     //zwrot wszystkich członków danej rodziny
+    public  ArrayList<Family> getFamily(Integer i) {
+        return (ArrayList<Family>) repozytorium.findAll();
     }
-//tworzenie rodziny
-    public void createFamiy(String family,int bobas,int dzieciak,int dorosly,ArrayList<FamilyMember> lista_czlonkow) throws MYException {
-        rodziny.add(new Family(idr,family,bobas,dzieciak,dorosly,lista_czlonkow));
-        idr = idr+1;
-    }
-
-    
-
-    
-   
+   public   String stworz_rodzine(String family,int bobas,int dzieciak,int dorosly,ArrayList<FamilyMember> lista_czlonkow) throws MYException {
+   repozytorium.save(new Family(idr,family,bobas,dzieciak,dorosly,lista_czlonkow));
+   return String.valueOf(idr);
+   }
 }

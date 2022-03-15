@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
-import com.example.zadanieInteca.resources.czlonkowie_rodzin.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -33,10 +31,14 @@ public class Family implements Serializable {
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE
     )
-    private Integer ID;
+    private Integer IDR;
     //Kolumny: niemowleta,dzieci,dorośli
     @Column
-    private Integer Infants, Children, Adults;
+    private Integer Adults;
+    @Column
+    private Integer Children;
+    @Column
+    private Integer Infants;
 // konstruktor
     Family(int id, String family, int bobas, int dzieciak, int dorosly, ArrayList<FamilyMember> lista_czlonkow) throws MYException {
      // kontrola poprawności
@@ -44,9 +46,8 @@ public class Family implements Serializable {
             Infants = bobas;
             Children = dzieciak;
             Adults = dorosly;
-            familyMembers = lista_czlonkow;
             Name = family;
-            this.ID=id;
+            this.IDR=id;
         } else {
             // przypadku niepoprawności
             throw new MYException();
@@ -79,15 +80,13 @@ public class Family implements Serializable {
 
     private String Name;
 
-    private ArrayList<FamilyMember> familyMembers = new ArrayList<>();
 
     Family(Integer ID, String nazwa, Integer niemowleta, Integer dzieci, Integer dorosli, ArrayList<FamilyMember> czlonkowie_rodziny) throws MYException {
         if (validateFamilyData(niemowleta, dzieci, dorosli, czlonkowie_rodziny) == true) {
             Infants = niemowleta;
-            this.ID = ID;
+            this.IDR = ID;
             Children = dzieci;
             Adults = dorosli;
-            familyMembers = czlonkowie_rodziny;
             Name = nazwa;
         } else {
             throw new MYException();
@@ -95,7 +94,7 @@ public class Family implements Serializable {
     }
 
     public void setID(Integer ID) {
-        this.ID = ID;
+        this.IDR = ID;
     }
 
     public String getName() {
@@ -106,18 +105,15 @@ public class Family implements Serializable {
         this.Name = Name;
     }
 
-    ArrayList<FamilyMember> getFamilyMembers() {
-        return familyMembers;
-    }
 
     //Metoda kontrolujaca poprawność
     @SuppressWarnings("empty-statement")
     private boolean validateFamilyData(Integer niemowleta, Integer dzieci, Integer dorosli, ArrayList<FamilyMember> czlonkowie_rodziny) {
         int vniemowleta = 0, vdzieci = 0, vdorosli = 0;
         for (FamilyMember CZ : czlonkowie_rodziny) {
-            if (CZ.wiek <= 4) {
+            if (CZ.getAge() <= 4) {
                 vniemowleta = vniemowleta + 1;
-            } else if (CZ.wiek > 4 && CZ.wiek <= 16) {
+            } else if (CZ.getAge() > 4 && CZ.getAge() <= 16) {
                 vdzieci = vdzieci + 1;
             } else {
                 vdorosli = vdorosli + 1;
@@ -128,6 +124,6 @@ public class Family implements Serializable {
     }
 
     public Integer getId() {
-        return ID;
+        return IDR;
     }
 }

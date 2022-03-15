@@ -1,1 +1,4 @@
-com\example\zadanieInteca\ZadanieIntecaApplicationTests.class
+com\example\zadanieInteca\ZadanieIntecaApplicationTest.class
+com\example\zadanieInteca\ZadanieIntecaApplicationNGTest.class
+com\example\zadanieInteca\ZadanieIntecaApplicationTests1.class
+com\example\zadanieInteca\RESTService\MYExceptionTest.class

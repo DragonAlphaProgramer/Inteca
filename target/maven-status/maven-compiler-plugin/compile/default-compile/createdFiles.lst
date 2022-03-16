@@ -1,5 +1,4 @@
 com\example\zadanieInteca\RESTService\MYException.class
-com\example\zadanieInteca\resources\czlonkowie_rodzin\FamilyMember_repository.class
 com\example\zadanieInteca\resources\rodzina\FamilyRepository.class
 com\example\zadanieInteca\resources\rodzina\FamilyController.class
 com\example\zadanieInteca\resources\czlonkowie_rodzin\FamilyMember.class
@@ -7,6 +6,5 @@ com\example\zadanieInteca\RESTService\MYException$MyException.class
 com\example\zadanieInteca\resources\czlonkowie_rodzin\FamilyMemberService.class
 com\example\zadanieInteca\resources\rodzina\FamilyService.class
 com\example\zadanieInteca\resources\rodzina\Family.class
-.netbeans_automatic_build
 com\example\zadanieInteca\resources\czlonkowie_rodzin\FamilyMemberController.class
 com\example\zadanieInteca\ZadanieIntecaApplication.class

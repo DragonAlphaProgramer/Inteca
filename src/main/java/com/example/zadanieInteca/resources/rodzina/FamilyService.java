@@ -23,16 +23,32 @@ public class FamilyService {
    int idr=1;
     @Autowired
     private FamilyRepository repozytorium;
-    //zwrot wszystkich członków rodzin
+    //zwrot wszystkich rodzin
      public  ArrayList<Family> r1 = new ArrayList<Family>();
     ArrayList<Family> getAllFamily() {
         ArrayList<Family> rodziny = new ArrayList<>();
         repozytorium.findAll().forEach(rodziny::add);
         return rodziny;
     }
-     //zwrot wszystkich członków danej rodziny
+    
+     //zwrot danych rodziny
     public  ArrayList<Family> getFamily(Integer i) {
-        return (ArrayList<Family>) repozytorium.findAll();
+        ArrayList<Family> wynik = new ArrayList<>();
+        for(Family rodzina :(ArrayList<Family>) repozytorium.findAll()){
+            if(rodzina.getId()==i){
+                wynik.add(rodzina);
+            }
+        }  
+        return wynik;
+    }
+     public  int getid(String s) {
+        Family wynik = null;
+        for(Family rodzina :(ArrayList<Family>) repozytorium.findAll()){
+            if(rodzina.getName().equals(s)){
+                wynik=rodzina;
+            }
+        }  
+        return wynik.getId();
     }
    public   String stworz_rodzine(String family,int bobas,int dzieciak,int dorosly,ArrayList<FamilyMember> lista_czlonkow) throws MYException {
    repozytorium.save(new Family(idr,family,bobas,dzieciak,dorosly,lista_czlonkow));

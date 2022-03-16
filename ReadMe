@@ -1,0 +1,5 @@
+Plik sql "zlot rodzin" jest bazą która jest wykorzystana w zadaniu.
+Projekt został npisany w programie NetBeans wersja 12.5.
+Projekt wykorzystuje maven, spring, html.
+Kontrolery działają, są wstępnie sprawdzone.
+Działa dodawanie rodzin, krewnych oraz podgląd krewnych i rodzin. Tylko połączyć się udało i wypisać łącznie w 1 html.
